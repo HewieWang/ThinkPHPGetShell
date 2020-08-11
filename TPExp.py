@@ -73,21 +73,22 @@ def req_get(url, proxy):
 
 def req_post(url, proxy, data):
     res_body = ''
+    global resc
     if proxy:
         try:
-            res = requests.post(url=url, headers=headers, verify=False, data=data, allow_redirects=False, proxies=proxy, timeout=5)
-            res.encoding = 'utf-8'
+            resc = requests.post(url=url, headers=headers, verify=False, data=data, allow_redirects=False, proxies=proxy, timeout=5)
+            resc.encoding = 'utf-8'
         except:
             print("网络出错！")
             pass
     else:
         try:
-            res = requests.post(url=url, headers=headers, verify=False, data=data, allow_redirects=False, timeout=5)
-            res.encoding = 'utf-8'
+            resc = requests.post(url=url, headers=headers, verify=False, data=data, allow_redirects=False, timeout=5)
+            resc.encoding = 'utf-8'
         except:
             print("网络出错！")
             pass
-    return res
+    return resc
 
 def think_rce_check(host, proxy):
     print('thinkphp_RCE探测：')
